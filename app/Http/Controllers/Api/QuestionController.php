@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Question;
 
 class QuestionController extends Controller
 {
@@ -14,7 +15,13 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $question = Question::with('answers')->get();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'success',
+            'data' => $question
+        ])
     }
 
     /**

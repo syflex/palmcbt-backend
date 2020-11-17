@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\AuthNotification;
 use Carbon\Carbon;
-use App\User;
+use App\Models\User;
 use Validator;
 use App;
 
@@ -26,20 +26,20 @@ class AuthController extends Controller
     public function signup(Request $request)
     {       
 
-        $messages = [
-            'name.required'    => 'Enter full name!',
-            'email.required' => 'Enter an e-mail address!',
-            'email' => 'E-mail address exist!',
-            'password.required'    => 'Password is required',
-            'password_confirmation' => 'The :password and :password_confirmation must match.'
-        ];
+        // $messages = [
+        //     'name.required'    => 'Enter full name!',
+        //     'email.required' => 'Enter an e-mail address!',
+        //     'email' => 'E-mail address exist!',
+        //     'password.required'    => 'Password is required',
+        //     'password_confirmation' => 'The :password and :password_confirmation must match.'
+        // ];
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required',
             'password_confirmation' => 'required|same:password',
-        ], $messages);
+        ]);
 
         $user = User::where('email', $request->get('email'))->first();
         
