@@ -26,11 +26,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
 
+    Route::resource('question', 'QuestionController');
+    Route::resource('media', 'MediaController');
+
     // authenticated routes using middleware
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', 'Api\AuthController@logout');
         Route::get('user', 'Api\AuthController@user');
-        
-        Route::resource('question', 'QuestionController');
     });
 });
