@@ -17,48 +17,69 @@ class QuestionTableSeeder extends Seeder
     public function run()
     {
         $question = Question::create([
-            'question' => 'question one',
+            'question' => 'What is the Square Root of 25?',
             'type' => 'select',//select, multi-select or essay
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
-            'answer' => 'first answer to question one',
+            'answer' => '(A). 25',
             'confirmed' => false,//true for correct anwser
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
-            'answer' => 'second answer to question one',
+            'answer' => '(B). 5',
             'confirmed' => true,//true for correct anwser
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
-            'answer' => 'third answer to question one',
+            'answer' => '(C). 15',
             'confirmed' => false,//true for correct anwser
         ]);
 
 
         $question = Question::create([
-            'question' => 'question two',
+            'question' => 'Find x in the following equation: 2x - 5 = 9',
+            'type' => 'select',//select, multi-select or essay
+        ]);
+        $answer = Answers::create([
+            'question_id' => $question->id,
+            'answer' => '(A). 7',
+            'confirmed' => true,//true for correct anwser
+        ]);
+        $answer = Answers::create([
+            'question_id' => $question->id,
+            'answer' => '(B). 5',
+            'confirmed' => false,//true for correct anwser
+        ]);
+        $answer = Answers::create([
+            'question_id' => $question->id,
+            'answer' => '(C). 2',
+            'confirmed' => false,//true for correct anwser
+        ]);
+
+
+        $question = Question::create([
+            'question' => 'Which of these is/are TRUE about a parallelogram?',
             'type' => 'multi-select',//select, multi-select or essay
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
-            'answer' => 'first answer to question two',
+            'answer' => '(A). Opposite sides are equal.',
             'confirmed' => false,//true for correct anwser
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
-            'answer' => 'second answer to question two',
+            'answer' => '(B). Opposite lines never meet.',
             'confirmed' => true,//true for correct anwser
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
-            'answer' => 'third answer to question two',
+            'answer' => '(C). All angles are at 45 degrees.',
             'confirmed' => false,//true for correct anwser
         ]);
 
         $question = Question::create([
-            'question' => 'question two',
+            'question' => 'Derive the Almighty formular',
             'type' => 'essay',//select, multi-select or essay
         ]);
 
