@@ -44,12 +44,12 @@ class QuestionTableSeeder extends Seeder
         $answer = Answers::create([
             'question_id' => $question->id,
             'answer' => '(A). 7',
-            'confirmed' => false,//true for correct anwser
+            'confirmed' => true,//true for correct anwser
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
             'answer' => '(B). 5',
-            'confirmed' => true,//true for correct anwser
+            'confirmed' => false,//true for correct anwser
         ]);
         $answer = Answers::create([
             'question_id' => $question->id,
