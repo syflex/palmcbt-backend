@@ -30,7 +30,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::resource('media', 'MediaController');
 
     // authenticated routes using middleware
-    Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('logout', 'Api\AuthController@logout');
         Route::get('user', 'Api\AuthController@user');
     });

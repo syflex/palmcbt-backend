@@ -60,14 +60,14 @@ class AuthController extends Controller
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             
-            $tokenResult = $user->createToken('Personal Access Token');
-            $token = $tokenResult->token;
-            $token->save();
+            // $tokenResult = $user->createToken('Personal Access Token');
+            // $token = $tokenResult->token;
+            // $token->save();
 
             return response()->json([
                 'status' => 'success',
                 'message' => 'User created successfully',
-                'access_token' => $tokenResult->accessToken,
+                // 'access_token' => $tokenResult->accessToken,
                 'data' => $user,
             ]);
         }
@@ -90,27 +90,28 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $credentials = request(['email', 'password']);
+        // $credentials = request(['email', 'password']);
+        $user = User::where('email', $request->email)->first();
        
-        if (!Auth::attempt($credentials))
+        if (!$user)
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Unauthorized'
             ], 401);
 
 
-        $user = User::where('id', Auth::user()->id)->first();
+        // $user = User::where('id', Auth::user()->id)->first();
 
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
+        // $tokenResult = $user->createToken('Personal Access Token');
+        // $token = $tokenResult->token;
 
-        if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
-        $token->save();
+        // if ($request->remember_me)
+        //     $token->expires_at = Carbon::now()->addWeeks(1);
+        // $token->save();
 
         return response()->json([
             'status' => 'success',
-            'access_token' => $tokenResult->accessToken,
+            // 'access_token' => $tokenResult->accessToken,
             'message' => 'login successful',
             'data' => $user
         ]);
