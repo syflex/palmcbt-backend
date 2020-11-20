@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use App\Models\Media;
 
 class MediaController extends Controller
 {
@@ -41,13 +42,14 @@ class MediaController extends Controller
         $extension = $request->file('video')->getClientOriginalExtension();
         $storage = Storage::disk('public')->putFileAs('media', new File($request->file('video')), $name );
        $link = url('/').'/storage/media/'.$name;
-        // $media = Media::create(
-        //     [
-        //         'name' => (Auth::user()->id),
-        //         'type' => $request->type_id,
-        //         'link' => $request->type,
-        //     ]
-        // );
+
+        $media = Media::create(
+            [
+                'name' => $name,
+                'type' => $extension,
+                'link' => $link,
+            ]
+        );
 
         return response()->json([
             'status' => 'success',
