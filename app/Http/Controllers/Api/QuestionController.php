@@ -21,7 +21,7 @@ class QuestionController extends Controller
             'status' => 'success',
             'message' => 'success',
             'data' => $question
-        ])
+        ]);
     }
 
     /**
