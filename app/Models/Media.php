@@ -11,5 +11,5 @@ class Media extends Model
 
     protected $fillable = [
         'name','type','link'
-    ]
+    ];
 }

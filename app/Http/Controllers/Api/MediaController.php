@@ -41,15 +41,13 @@ class MediaController extends Controller
         $name = $request->file('video')->getClientOriginalName();
         $extension = $request->file('video')->getClientOriginalExtension();
         $storage = Storage::disk('public')->putFileAs('media', new File($request->file('video')), $name );
-       $link = url('/').'/storage/media/'.$name;
-
-        $media = Media::create(
-            [
-                'name' => $name,
-                'type' => $extension,
-                'link' => $link,
-            ]
-        );
+        $link = url('/').'/storage/media/'.$name;
+        
+        $media = new Media;
+        $media->name = $name;
+        $media->type = $extension;
+        $media->link = $link;
+        $media->save();
 
         return response()->json([
             'status' => 'success',
