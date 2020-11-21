@@ -67,10 +67,9 @@
             "php artisan config:clear",
             "php artisan storage:link",
             "chmod -R 777 storage",
-            "chmod -R 777 /storage",
             "chmod -R 777 storage/",
             "chmod -R 777 public/",            
-            "php artisan migrate:fresh --seed",
+            "php artisan migrate",
             "php artisan passport:install --force"
         ]
     }
