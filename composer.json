@@ -66,6 +66,8 @@
             "php artisan optimize",
             "php artisan config:clear",
             "chmod -R 777 storage",
+            "chmod -R 777 /storage",
+            "chmod -R 777 storage/",
             "chmod -R 777 public/",
             "php artisan storage:link",
             "php artisan migrate:fresh --seed",
