@@ -22,7 +22,7 @@
                             <tr>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->type }}</td>
-                                <td>{{ $item->link }}</td>
+                                <td><a href="{{ $item->link }}" target="_blank">{{ $item->link }}</a></td>
                             </tr>
                         @empty
                             No Data
